@@ -1,8 +1,8 @@
 /* global document */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Demo from './Demo';
+import CropTool from './CropTool';
 
-const Root = () => (<Demo />);
+const Root = () => (<CropTool />);
 
 ReactDOM.render(<Root />, document.getElementById('main'));

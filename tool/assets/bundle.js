@@ -54,14 +54,14 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _Demo = __webpack_require__(182);
+	var _CropTool = __webpack_require__(182);
 
-	var _Demo2 = _interopRequireDefault(_Demo);
+	var _CropTool2 = _interopRequireDefault(_CropTool);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Root = function Root() {
-	  return _react2.default.createElement(_Demo2.default, null);
+	  return _react2.default.createElement(_CropTool2.default, null);
 	}; /* global document */
 
 

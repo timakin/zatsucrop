@@ -6,10 +6,10 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://0.0.0.0:3000',
     'webpack/hot/only-dev-server',
-    path.join(__dirname, 'example/src/index.jsx')
+    path.join(__dirname, 'tool/src/index.jsx')
   ],
   output: {
-    path: path.join(__dirname, 'example/assets'),
+    path: path.join(__dirname, 'tool/assets'),
     filename: 'bundle.js',
     publicPath: '/assets/'
   },

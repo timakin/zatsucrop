@@ -1,2 +1,7 @@
 # zatsucrop
-zatsu image crop
+
+```
+$ npm install
+$ npm run build
+$ npm run start
+```

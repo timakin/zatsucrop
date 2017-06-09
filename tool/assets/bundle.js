@@ -21888,13 +21888,13 @@
 
 	var src = 'img/timakin.jpg';
 
-	var Demo = function (_Component) {
-	  _inherits(Demo, _Component);
+	var CropTool = function (_Component) {
+	  _inherits(CropTool, _Component);
 
-	  function Demo(props) {
-	    _classCallCheck(this, Demo);
+	  function CropTool(props) {
+	    _classCallCheck(this, CropTool);
 
-	    var _this = _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (CropTool.__proto__ || Object.getPrototypeOf(CropTool)).call(this, props));
 
 	    _this.state = {
 	      src: src,
@@ -21902,16 +21902,19 @@
 	      startX: 0,
 	      startY: 0,
 	      width: 0,
-	      height: 0
+	      height: 0,
+	      aspectRatio: 375 / 240
 	    };
 	    _this.cropImage = _this.cropImage.bind(_this);
 	    _this.onChange = _this.onChange.bind(_this);
+	    _this.changeToLargeAspectRatio = _this.changeToLargeAspectRatio.bind(_this);
+	    _this.changeToSmallAspectRatio = _this.changeToSmallAspectRatio.bind(_this);
 	    _this.useDefaultImage = _this.useDefaultImage.bind(_this);
 	    _this._cropmove = _this._cropmove.bind(_this);
 	    return _this;
 	  }
 
-	  _createClass(Demo, [{
+	  _createClass(CropTool, [{
 	    key: 'onChange',
 	    value: function onChange(e) {
 	      var _this2 = this;
@@ -21958,6 +21961,20 @@
 	      this.setState({ src: src });
 	    }
 	  }, {
+	    key: 'changeToLargeAspectRatio',
+	    value: function changeToLargeAspectRatio() {
+	      this.setState({
+	        aspectRatio: 375 / 240
+	      });
+	    }
+	  }, {
+	    key: 'changeToSmallAspectRatio',
+	    value: function changeToSmallAspectRatio() {
+	      this.setState({
+	        aspectRatio: 100 / 72
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _this3 = this;
@@ -21967,10 +21984,10 @@
 	        null,
 	        _react2.default.createElement(
 	          'div',
-	          { style: { width: '100%' } },
+	          { className: 'box', style: { width: '50%', float: 'left' } },
 	          _react2.default.createElement(_reactCropper2.default, {
 	            style: { height: 400, width: '100%' },
-	            aspectRatio: 16 / 9,
+	            aspectRatio: this.state.aspectRatio,
 	            preview: '.img-preview',
 	            guides: false,
 	            src: this.state.src,
@@ -21978,21 +21995,33 @@
 	            ref: function ref(cropper) {
 	              _this3.cropper = cropper;
 	            }
-	          })
+	          }),
+	          _react2.default.createElement(
+	            'button',
+	            { onClick: this.changeToLargeAspectRatio },
+	            '\u5927\u753B\u50CF'
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            { onClick: this.changeToSmallAspectRatio },
+	            '\u5C0F\u753B\u50CF'
+	          )
 	        ),
 	        _react2.default.createElement(
 	          'div',
 	          null,
+	          _react2.default.createElement('div', { className: 'img-preview', style: { width: '100%', float: 'left', height: 300 } }),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('br', null),
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'box', style: { width: '50%', float: 'left' } },
+	            { className: 'box', style: { width: '50%', float: 'right' } },
 	            _react2.default.createElement('input', { type: 'file', onChange: this.onChange }),
 	            _react2.default.createElement(
 	              'button',
 	              { onClick: this.useDefaultImage },
 	              'Reset'
 	            ),
-	            _react2.default.createElement('br', null),
 	            _react2.default.createElement(
 	              'p',
 	              null,
@@ -22017,16 +22046,6 @@
 	              'height: ',
 	              this.state.height
 	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'box', style: { width: '50%', float: 'right' } },
-	            _react2.default.createElement(
-	              'h1',
-	              null,
-	              '\u30D7\u30EC\u30D3\u30E5\u30FC'
-	            ),
-	            _react2.default.createElement('div', { className: 'img-preview', style: { width: '100%', float: 'left', height: 300 } })
 	          )
 	        ),
 	        _react2.default.createElement('br', { style: { clear: 'both' } })
@@ -22034,10 +22053,10 @@
 	    }
 	  }]);
 
-	  return Demo;
+	  return CropTool;
 	}(_react.Component);
 
-	exports.default = Demo;
+	exports.default = CropTool;
 
 /***/ }),
 /* 183 */

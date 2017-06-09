@@ -7,7 +7,7 @@ import Cropper from '../../src/react-cropper';
 
 const src = 'img/timakin.jpg';
 
-export default class Demo extends Component {
+export default class CropTool extends Component {
 
   constructor(props) {
     super(props);
@@ -68,7 +68,7 @@ export default class Demo extends Component {
   render() {
     return (
       <div>
-        <div style={{ width: '100%' }}>
+        <div style={{ width: '50%', float: 'left'  }}>
           <Cropper
             style={{ height: 400, width: '100%' }}
             aspectRatio={16 / 9}
@@ -80,19 +80,19 @@ export default class Demo extends Component {
           />
         </div>
         <div>
-          <div className="box" style={{ width: '50%', float: 'left' }}>
+            <div className="img-preview" style={{ width: '100%', float: 'left', height: 300 }} />
+            <br />
+            <br />
+          
+          <div className="box" style={{ width: '50%', float: 'right' }}>
             <input type="file" onChange={this.onChange} />
           <button onClick={this.useDefaultImage}>Reset</button>
-          <br />
+          
             <p>startX: { this.state.startX }</p>
             <p>startY: { this.state.startY }</p>
             <p>width: { this.state.width }</p>
             <p>height: { this.state.height }</p>
-          
-          </div>
-          <div className="box" style={{ width: '50%', float: 'right' }}>
-            <h1>プレビュー</h1>
-            <div className="img-preview" style={{ width: '100%', float: 'left', height: 300 }} />
+
           </div>
         </div>
         <br style={{ clear: 'both' }} />

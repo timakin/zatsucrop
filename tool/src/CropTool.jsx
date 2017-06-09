@@ -17,10 +17,13 @@ export default class CropTool extends Component {
       startX: 0,
       startY: 0,
       width: 0,
-      height: 0
+      height: 0,
+      aspectRatio: 375 / 240
     };
     this.cropImage = this.cropImage.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.changeToLargeAspectRatio = this.changeToLargeAspectRatio.bind(this);
+    this.changeToSmallAspectRatio = this.changeToSmallAspectRatio.bind(this);
     this.useDefaultImage = this.useDefaultImage.bind(this);
     this._cropmove = this._cropmove.bind(this);
   }
@@ -65,28 +68,43 @@ export default class CropTool extends Component {
     this.setState({ src });
   }
 
+  changeToLargeAspectRatio() {
+    this.setState({ 
+      aspectRatio: 375 / 240
+    });
+  }
+
+  changeToSmallAspectRatio() {
+    this.setState({ 
+      aspectRatio: 100 / 72
+    });
+  }
+
   render() {
     return (
       <div>
-        <div style={{ width: '50%', float: 'left'  }}>
+        <div className="box" style={{ width: '50%', float: 'left'  }}>
           <Cropper
             style={{ height: 400, width: '100%' }}
-            aspectRatio={16 / 9}
+            aspectRatio={ this.state.aspectRatio }
             preview=".img-preview"
             guides={false}
             src={this.state.src}
             cropmove = { this._cropmove }
             ref={cropper => { this.cropper = cropper; }}
           />
+          <button onClick={this.changeToLargeAspectRatio}>大画像</button>
+          <button onClick={this.changeToSmallAspectRatio}>小画像</button>  
         </div>
         <div>
-            <div className="img-preview" style={{ width: '100%', float: 'left', height: 300 }} />
-            <br />
-            <br />
+          <div className="img-preview" style={{ width: '100%', float: 'left', height: 300 }} />
+          <br />
+          <br />
           
           <div className="box" style={{ width: '50%', float: 'right' }}>
+            
             <input type="file" onChange={this.onChange} />
-          <button onClick={this.useDefaultImage}>Reset</button>
+            <button onClick={this.useDefaultImage}>Reset</button>
           
             <p>startX: { this.state.startX }</p>
             <p>startY: { this.state.startY }</p>
